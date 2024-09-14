@@ -1,0 +1,11 @@
+.env
+*.png
+*.mp3
+*.mp4
+*.avi
+*.mov
+*.wmv
+*.flv
+*.webm
+venv
+venv/
