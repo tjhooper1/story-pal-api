@@ -3,12 +3,14 @@ from fastapi.responses import FileResponse
 from pydantic import BaseModel
 import uvicorn
 from .story_generator import generate_story
-
+from auth import router as auth_router
 
 app = FastAPI()
 
 class StoryRequest(BaseModel):
     prompt: str
+
+app.include_router(auth_router, prefix="/auth", tags=["authentication"])
 
 @app.post('/generate-story')
 async def generate_story(request: StoryRequest):

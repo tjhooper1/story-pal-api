@@ -23,7 +23,7 @@ def generate_story_text(prompt):
     except Exception as e:
         raise Exception(f"Error generating story text: {e}")
 
-def generate_images(story_text) -> list[str]:
+def generate_images(story_text: str) -> list[str]:
     try:
         segments = story_text.split('. ')
         image_paths = []
@@ -47,7 +47,7 @@ def generate_images(story_text) -> list[str]:
     except Exception as e:
         raise Exception(f"Error generating images: {e}")
     
-def generate_narration_audio(story_text):
+def generate_narration_audio(story_text: str) -> str:
     try:
         # Placeholder for TTS implementation
         # Replace this with actual API calls to your chosen TTS service
@@ -60,7 +60,7 @@ def generate_narration_audio(story_text):
     except Exception as e:
         raise Exception(f"Error generating narration audio: {e}")
 
-def create_video(image_paths, audio_path):
+def create_video(image_paths: list[str], audio_path: str) -> str:
     try:
         audio_clip = AudioFileClip(audio_path)
         duration_per_image = audio_clip.duration / len(image_paths)
@@ -78,7 +78,7 @@ def create_video(image_paths, audio_path):
     except Exception as e:
         raise Exception(f"Error creating video: {e}")
 
-def generate_story(prompt) -> str:
+def generate_story(prompt: str) -> str:
     story_text = generate_story_text(prompt)
     image_paths = generate_images(story_text)
     audio_path = generate_narration_audio(story_text)
